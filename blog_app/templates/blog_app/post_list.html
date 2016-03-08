@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for post in post_list %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.body }}</p>
+        <p>--<a href="#">{{ post.author.user.username }}</a></p>
+    {% endfor %}
+{% endblock %}

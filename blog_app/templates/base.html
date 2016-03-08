@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Blog</title>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+        <nav>
+            <ul>
+                <li>Nav Content</li>
+                <li><a href="{% url 'post_create_view' %}">Create</a></li>
+                <li><a href="{% url 'logout_view' %}">Logout</a></li>
+            </ul>
+        </nav>
+    {% else %}
+        <nav>
+            <ul>
+                <li>Nav Content</li>
+                <li><a href="{% url 'post_create_view' %}">Create</a></li>
+                <li><a href="{% url 'login_view' %}">Login</a></li>
+            </ul>
+        </nav>
+    {% endif %}
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
