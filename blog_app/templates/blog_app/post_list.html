@@ -9,5 +9,12 @@
                 {{ post.author.user.username }}
             </a>
         </p>
+        <span>Tags: </span>
+        {% for tag in post.tags.all %}
+            <span>{{ tag }} </span>
+        {% endfor %}
+        {% if post.author.user == request.user %}
+            <a href="{% url 'tag_create_view' post.pk %}">Add Tag</a>
+        {% endif %}
     {% endfor %}
 {% endblock %}

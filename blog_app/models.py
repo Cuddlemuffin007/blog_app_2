@@ -10,17 +10,26 @@ class Author(models.Model):
         return "{}'s Author instance".format(self.user.username)
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     title = models.CharField(max_length=20)
     body = models.TextField()
     author = models.ForeignKey(Author)
     posted = models.DateTimeField(auto_now_add=True)
+    tags = models.ManyToManyField(Tag)
 
     class Meta:
         ordering = ['-posted']
 
     def __str__(self):
         return "{} - {}".format(self.title, self.author.user.username)
+
 
 
 @receiver(post_save, sender='auth.User')
