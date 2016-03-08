@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from blog_app.models import Post, Author
+
+admin.site.register([Author, Post])
