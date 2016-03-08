@@ -16,6 +16,9 @@ class Post(models.Model):
     author = models.ForeignKey(Author)
     posted = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-posted']
+
     def __str__(self):
         return "{} - {}".format(self.title, self.author.user.username)
 

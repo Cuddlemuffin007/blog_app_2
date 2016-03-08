@@ -4,6 +4,10 @@
     {% for post in post_list %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.body }}</p>
-        <p>--<a href="#">{{ post.author.user.username }}</a></p>
+        <p>--
+            <a href="{% url 'author_post_view' post.author.user.pk %}">
+                {{ post.author.user.username }}
+            </a>
+        </p>
     {% endfor %}
 {% endblock %}
