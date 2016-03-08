@@ -9,12 +9,26 @@
                 {{ post.author.user.username }}
             </a>
         </p>
+        <div class="tags">
         <span>Tags: </span>
         {% for tag in post.tags.all %}
             <span>{{ tag }} </span>
         {% endfor %}
+        </div>
+        
+        <div class="likes">
+        {% if post.likes.all %}
+            {% for user in post.likes.all %}
+                <span> {{ user.username }}</span>
+            {% endfor %}
+        <span> liked this</span>
+        {% endif %}
+        </div>
+
         {% if post.author.user == request.user %}
             <a href="{% url 'tag_create_view' post.pk %}">Add Tag</a>
+        {% elif post.author.user != request.user and request.user not in post.likes.all %}
+            <a href="{% url 'like_view' post.pk %}">Like!</a>
         {% endif %}
     {% endfor %}
 {% endblock %}

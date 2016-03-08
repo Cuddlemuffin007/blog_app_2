@@ -59,3 +59,8 @@ class SignUpView(CreateView):
     def get_success_url(self):
         return reverse('login_view')
 
+
+def like_view(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.likes.add(request.user)
+    return HttpResponseRedirect('/')

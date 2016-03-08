@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 
-from blog_app.views import Home, PostCreateView, SignUpView, AuthorPostView, TagCreateView
+from blog_app.views import Home, PostCreateView, SignUpView, AuthorPostView, TagCreateView, like_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout_then_login, name='logout_view'),
     url(r'^sign_up/$', SignUpView.as_view(), name='signup_view'),
     url(r'^create_post/$', login_required(PostCreateView.as_view()), name='post_create_view'),
-    url(r'^post/(?P<pk>\d+)/create_tag/$', TagCreateView.as_view(), name='tag_create_view')
+    url(r'^post/(?P<pk>\d+)/create_tag/$', TagCreateView.as_view(), name='tag_create_view'),
+    url(r'^post/(?P<pk>\d+)/like/$', like_view, name='like_view')
 ]

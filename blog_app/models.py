@@ -23,6 +23,7 @@ class Post(models.Model):
     author = models.ForeignKey(Author)
     posted = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag)
+    likes = models.ManyToManyField('auth.User')
 
     class Meta:
         ordering = ['-posted']
