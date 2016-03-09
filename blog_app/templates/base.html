@@ -12,7 +12,7 @@
     {% if request.user.is_authenticated %}
         <nav>
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Blog</a>
+                <a href="{% url 'home_view' %}" class="brand-logo">Blog</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{% url 'home_view' %}">All Posts</a></li>
                     <li><a href="{% url 'post_create_view' %}">Create a Post</a></li>
@@ -23,7 +23,7 @@
     {% else %}
         <nav>
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Blog</a>
+                <a href="{% url 'home_view' %}" class="brand-logo">Blog</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{% url 'home_view' %}">All Posts</a></li>
                     <li><a href="{% url 'post_create_view' %}">Create a Post</a></li>

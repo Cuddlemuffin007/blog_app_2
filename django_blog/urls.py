@@ -18,16 +18,18 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 
-from blog_app.views import Home, PostCreateView, SignUpView, AuthorPostView, TagCreateView, like_view
+from blog_app.views import Home, PostCreateView, SignUpView, AuthorPostView, PostByTagView, \
+    TagCreateView, like_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', Home.as_view(), name='home_view'),
     url(r'^author/(?P<pk>\d+)/posts$', AuthorPostView.as_view(), name='author_post_view'),
+    url(r'^tag/(?P<name>\W*\w+)/posts$', PostByTagView.as_view(), name='post_tag_view'),
     url(r'^login/$', auth_views.login, name='login_view'),
     url(r'^logout/$', auth_views.logout_then_login, name='logout_view'),
     url(r'^sign_up/$', SignUpView.as_view(), name='signup_view'),
     url(r'^create_post/$', login_required(PostCreateView.as_view()), name='post_create_view'),
-    url(r'^post/(?P<pk>\d+)/create_tag/$', TagCreateView.as_view(), name='tag_create_view'),
-    url(r'^post/(?P<pk>\d+)/like/$', like_view, name='like_view')
+    url(r'^post/(?P<pk>\d+)/create_tag/$', login_required(TagCreateView.as_view()), name='tag_create_view'),
+    url(r'^post/(?P<pk>\d+)/like/$', login_required(like_view), name='like_view')
 ]

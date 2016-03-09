@@ -19,6 +19,13 @@ class AuthorPostView(ListView):
         return Post.objects.filter(author__user_id=self.kwargs['pk'])
 
 
+class PostByTagView(ListView):
+    model = Post
+
+    def get_queryset(self):
+        return Post.objects.filter(tags__name=self.kwargs['name'])
+
+
 class PostCreateView(CreateView):
     model = Post
     fields = ('title', 'body')
