@@ -1,26 +1,36 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Django Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
 <body>
     {% if request.user.is_authenticated %}
         <nav>
-            <ul>
-                <li><a href="{% url 'home_view' %}">All Posts</a></li>
-                <li><a href="{% url 'post_create_view' %}">Create a Post</a></li>
-                <li><a href="{% url 'logout_view' %}">Logout</a></li>
-            </ul>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Blog</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{% url 'home_view' %}">All Posts</a></li>
+                    <li><a href="{% url 'post_create_view' %}">Create a Post</a></li>
+                    <li><a href="{% url 'logout_view' %}">Logout</a></li>
+                </ul>
+            </div>
         </nav>
     {% else %}
         <nav>
-            <ul>
-                <li><a href="{% url 'home_view' %}">All Posts</a></li>
-                <li><a href="{% url 'post_create_view' %}">Create a Post</a></li>
-                <li><a href="{% url 'login_view' %}">Login</a></li>
-                <li><a href="{% url 'signup_view' %}">Create an Account</a></li>
-            </ul>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Blog</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{% url 'home_view' %}">All Posts</a></li>
+                    <li><a href="{% url 'post_create_view' %}">Create a Post</a></li>
+                    <li><a href="{% url 'login_view' %}">Login</a></li>
+                    <li><a href="{% url 'signup_view' %}">Create an Account</a></li>
+                </ul>
+            </div>
         </nav>
     {% endif %}
 

@@ -1,0 +1,39 @@
+#add-tag {
+    text-align: left;
+    display: block;
+}
+
+#like-btn {
+    text-align: right;
+    display: block;
+}
+
+.post-container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 1.2em 0;
+}
+
+.post-title {
+    text-align: center;
+}
+
+.post-body {
+    text-align: center;
+}
+
+.post-author {
+    text-align: right;
+    font-size: x-large;
+}
+
+.tags, .likes {
+    display: inline-block;
+    width: 40%;
+}
+
+.likes {
+    text-align: right;
+    float: right;
+    clear: left;
+}
